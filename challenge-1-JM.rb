@@ -46,20 +46,34 @@ require 'net/http'
 require 'json'
 require 'pp'
 
-url = 'https://dog.ceo/api/breeds/list/all'
-uri = URI(url)
-response = Net::HTTP.get(uri)
-dog_breeds = JSON.parse(response) # Convert JSON data into Ruby data.
+# url = 'https://dog.ceo/api/breeds/list/all'
+# uri = URI(url)
+# response = Net::HTTP.get(uri)
+# dog_breeds = JSON.parse(response) # Convert JSON data into Ruby data.
 
-breed_names = dog_breeds['message']
+# breed_names = dog_breeds['message']
 
-breed_names.each do |breed_name|
-  puts "* #{breed_name[0].capitalize}"
-  if breed_name[1].any?
-    breed_name[1].each do |sub_breed|
-    puts "  * #{sub_breed.capitalize}"
-    end
-  end
-end
+# breed_names.each do |breed_name|
+#   puts "* #{breed_name[0].capitalize}"
+#   if breed_name[1].any?
+#     breed_name[1].each do |sub_breed|
+#     puts "  * #{sub_breed.capitalize}"
+#     end
+#   end
+# end
 
 # Question 4
+# q4_url = 'https://data.winnipeg.ca/resource/d3jk-hb6j.json?$limit=306000'
+q4_url = 'https://data.winnipeg.ca/resource/d3jk-hb6j.json'
+q4_uri = URI(q4_url)
+q4_response = Net::HTTP.get(q4_uri)
+trees = JSON.parse(q4_response)
+
+trees.each do |tree|
+  # puts "#{tree["botanical_name"]}"
+  # if (tree["botanical_name"] == "Emerald Ash Borer")
+    # puts "#{tree.where("botanical_name")}"
+
+  puts "#{tree["botanical_name"]}"
+
+end
